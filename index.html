@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深度學習課程申請 | AI Journey</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+```
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    :root {
+        --primary-color: #d97706;
+        --secondary-color: #92400e;
+        --accent-color: #f59e0b;
+        --bg-dark: #1f1f1f;
+        --bg-secondary: #2a2a2a;
+        --text-primary: #ffffff;
+        --text-secondary: #a3a3a3;
+        --border-color: #404040;
+        --hover-bg: #333333;
+    }
+    
+    body {
+        font-family: 'Noto Sans TC', sans-serif;
+        background: var(--bg-dark);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+    
+    /* Simple Background */
+    .bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: var(--bg-dark);
+    }
+    
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .header h1 {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+    
+    .header .subtitle {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+    
+    .section {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+    }
+    
+    .section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--primary-color);
+    }
+    
+    .section:hover {
+        transform: translateY(-2px);
+        background: var(--hover-bg);
+        border-color: var(--primary-color);
+    }
+    
+    .section h2 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .section h2::before {
+        content: '▸';
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
+    
+    .section p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        line-height: 1.8;
+    }
+    
+    .highlight {
+        color: var(--primary-color);
+        font-weight: 500;
+    }
+    
+    .code-style {
+        font-family: 'JetBrains Mono', monospace;
+        background: rgba(217, 119, 6, 0.2);
+        padding: 2px 8px;
+        border-radius: 4px;
+        color: var(--accent-color);
+        font-size: 0.9rem;
+    }
+    
+    .timeline {
+        position: relative;
+        padding-left: 2rem;
+        border-left: 2px solid var(--primary-color);
+        margin: 1rem 0;
+    }
+    
+    .timeline-item {
+        position: relative;
+        margin-bottom: 1rem;
+    }
+    
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -2.5rem;
+        top: 0.5rem;
+        width: 8px;
+        height: 8px;
+        background: var(--primary-color);
+        border-radius: 50%;
+    }
+    
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .skill-item {
+        background: var(--hover-bg);
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .skill-item:hover {
+        transform: translateY(-2px);
+        border-color: var(--primary-color);
+    }
+    
+    .footer {
+        text-align: center;
+        padding: 2rem 0;
+        border-top: 1px solid var(--border-color);
+        margin-top: 3rem;
+    }
+    
+    .footer p {
+        color: var(--text-secondary);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .container {
+            padding: 1rem;
+        }
+        
+        .section {
+            padding: 1.5rem;
+        }
+        
+        .skills-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* Animation for sections */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .section {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .section:nth-child(even) {
+        animation-delay: 0.1s;
+    }
+    
+    .section:nth-child(odd) {
+        animation-delay: 0.2s;
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+```
+<div class="container">
+    <header class="header">
+        <h1>深度學習課程申請</h1>
+        <p class="subtitle">// Journey into Artificial Intelligence</p>
+    </header>
+
+    <section class="section">
+        <h2>個人簡介與申請動機</h2>
+        <p>
+            我是一名程式開發者，目前在深度學習領域還是個新手。雖然平常會寫一些程式，
+            但對於 AI 和機器學習這塊完全沒有經驗。
+        </p>
+        <p>
+            為什麼想申請這門課？主要是因為我想 <span class="highlight">從頭開始好好學</span>。
+            網路上雖然有很多資源，但常常東學一點、西學一點，感覺很零散。
+            我希望能有一個完整的學習架構，從最基礎的數學開始，一步一步搞懂神經網路到底是怎麼運作的。
+        </p>
+        <p>
+            我知道這條路不會太輕鬆，特別是對我這種初學者來說，
+            但我已經準備好投入時間和精力來學習了。
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>職業背景</h2>
+        <p>
+            目前我是一名 <span class="highlight">軟體開發工程師</span>，主要工作是寫程式。
+            雖然會一些基本的程式設計，但對於 <span class="highlight">AI 和機器學習完全是新手</span>。
+            就是因為這樣，我才更想要好好學一次。
+        </p>
+        
+        <div class="skills-grid">
+            <div class="skill-item">
+                <strong>程式語言</strong><br>
+                Python (基礎), JavaScript
+            </div>
+            <div class="skill-item">
+                <strong>開發經驗</strong><br>
+                Web 前端開發, 基礎後端
+            </div>
+        </div>
+        
+        <p>
+            我選擇這門課，就是希望能夠 <span class="code-style">從基礎開始建立完整的知識</span>，
+            而不是東學一點、西學一點。我覺得打好基礎比快速上手更重要。
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>學習時間規劃</h2>
+        <p>
+            因為是初學者，我知道需要花比較多時間來學習。
+            我的時間規劃是這樣的：
+        </p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <strong>平日晚上 (19:00-22:00)</strong><br>
+                學線性代數、練習 Python、看課程內容
+            </div>
+            <div class="timeline-item">
+                <strong>週末上午 (4 小時)</strong><br>
+                寫程式練習、跟上課程進度
+            </div>
+            <div class="timeline-item">
+                <strong>週末下午 (4 小時)</strong><br>
+                複習這週學的東西、準備下週的課
+            </div>
+            <div class="timeline-item">
+                <strong>零碎時間</strong><br>
+                看教學影片、讀一些入門文章
+            </div>
+        </div>
+        
+        <p>
+            每週大概會花 <span class="code-style">25-30 小時</span> 來學習，
+            也會做筆記記錄每天學了什麼、遇到什麼問題。
+            因為是新手，我預期在基礎觀念上會需要多花一些時間理解。
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>情緒管理經歷</h2>
+        <p>
+            去年做一個重要專案的時候，因為技術選錯了導致專案延遲，
+            主管和客戶都給了不少壓力，當時真的覺得 <span class="highlight">很挫折也很焦慮</span>。
+        </p>
+        <p>
+            後來我是這樣處理的：
+        </p>
+        <p>
+            <strong>1. 冷靜分析問題</strong>：先搞清楚到底哪裡出錯，把問題記下來<br>
+            <strong>2. 跟團隊溝通</strong>：主動找大家討論怎麼解決，重新訂計畫<br>
+            <strong>3. 調整心態</strong>：把這次挫折當成學習機會<br>
+            <strong>4. 實際行動</strong>：加班學新技術，最後把專案做出來
+        </p>
+        <p>
+            這次經驗讓我學會了 <span class="code-style">在有壓力的時候保持冷靜</span>，
+            我覺得這對學深度學習這種有挑戰性的東西也很有幫助。
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>深度學習應用願景</h2>
+        <p>
+            雖然現在還是新手，但我有在想以後可以做什麼。
+            我對 <span class="highlight">金融領域的 AI 應用</span> 蠻有興趣的，想做一個智慧投資分析系統，大概的想法是：
+        </p>
+        <p>
+            • <strong>市場趨勢預測</strong>：分析歷史數據和新聞資訊，預測市場走向<br>
+            • <strong>風險評估</strong>：評估不同投資組合的風險，給一般人看得懂的建議<br>
+            • <strong>異常交易偵測</strong>：找出不正常的交易模式，提早發現問題<br>
+            • <strong>個人化投資建議</strong>：根據使用者的風險承受度和財務狀況給建議
+        </p>
+        <p>
+            為什麼想做金融相關的？因為我覺得金融市場有很多數據可以分析，
+            而且如果能幫助一般人做更好的投資決策，應該蠻有意義的。
+            不過我也知道金融市場很複雜，不是單純套個模型就能預測的。
+        </p>
+        <p>
+            以我現在的程度來說，這還只是個想法。
+            我希望透過這門課的學習，能慢慢了解要做這樣的系統需要哪些 
+            <span class="code-style">技術</span> 和 <span class="code-style">演算法</span>。
+            我相信從基礎學起，之後才能真的把這個想法做出來。
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>對基礎實作的思考</h2>
+        <p>
+            就算做不到像 OpenAI 那麼厲害，學基礎實作還是很重要：
+        </p>
+        <p>
+            <strong>🧠 真正理解原理</strong>：自己動手做過，才會真的懂神經網路怎麼運作<br>
+            <strong>🔧 解決問題更靈活</strong>：會從零開始做模型，遇到特殊問題比較好處理<br>
+            <strong>⚡ 知道怎麼優化</strong>：了解底層運作，要優化或除錯會比較容易<br>
+            <strong>🚀 未來創新的基礎</strong>：扎實的基礎才能做出創新的東西<br>
+            <strong>📚 持續學習的本錢</strong>：AI 領域變很快，有基礎知識才能一直學下去
+        </p>
+        <p>
+            就像有人說的："What I cannot create, I do not understand."（我做不出來的東西，就代表我不懂）
+            透過實作來學習，是真正搞懂技術的最好方法。
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>其他想說的話</h2>
+        <p>
+            雖然我是 <span class="highlight">完全的 AI 新手</span>，但我覺得這也不是壞事。
+            因為沒有舊的觀念，反而可以用更開放的心態來學習。
+        </p>
+        <p>
+            我不會因為自己是新手就覺得不好意思，反而會更努力學習。
+            我相信 <span class="code-style">認真的態度</span> 和 <span class="code-style">持續的努力</span> 
+            可以彌補經驗上的不足。
+        </p>
+        <p>
+            我會認真對待每堂課，不懂就問，不會就學，
+            也希望能跟同學們一起討論、互相學習。我也打算把學習過程記錄下來，
+            說不定以後可以幫到其他跟我一樣的新手。
+        </p>
+        <p>
+            謝謝你們願意給新手一個學習的機會，希望能在這門課裡，
+            開始我的 <span class="highlight">深度學習之路</span>！
+        </p>
+    </section>
+
+    <footer class="footer">
+        <p>// End of Application Document</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+            "The future belongs to those who learn more skills and combine them in creative ways." 
+            - Robert Greene
+        </p>
+    </footer>
+</div>
+
+<script>
+    // Add some interactive elements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add hover effects to sections
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.borderColor = 'var(--primary-color)';
+            });
+            section.addEventListener('mouseleave', function() {
+                this.style.borderColor = 'var(--border-color)';
+            });
+        });
+
+        // Smooth scrolling for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+    });
+</script>
+```
+
+</body>
+</html>
